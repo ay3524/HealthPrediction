@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">HealthPrediction</string>
+    <string name="title_activity_query_search">QuerySearchActivity</string>
+</resources>
