@@ -35,7 +35,8 @@
             android:id="@+id/spinner"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:layout_gravity="center"></Spinner>
+            android:layout_gravity="center">
+        </Spinner>
 
         <Button
             android:layout_marginBottom="10dp"
@@ -79,6 +80,7 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/clear"
             android:textSize="17sp"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@android:color/white"

@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     Spinner sp;
     List<String> spinnerList;
     List<String> searchQuery;
-    Button search, add;
+    Button search, add, clear;
     TextView queryParam;
 
     @Override
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         sp.setOnItemSelectedListener(this);
         search = (Button) findViewById(R.id.search);
         add = (Button) findViewById(R.id.addButton);
+        clear = (Button) findViewById(R.id.clear);
         queryParam = (TextView) findViewById(R.id.queryParam);
 
         spinnerList = new ArrayList<>();
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         spinnerList.add("Loss of appetite");
         spinnerList.add("General Weakness");
         spinnerList.add("Chills");
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, spinnerList);
         sp.setAdapter(arrayAdapter);
 
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 if (searchQuery.size() < 3) {
                     Toast.makeText(MainActivity.this, "Add at least 3 queries in the box to search", Toast.LENGTH_SHORT).show();
                 } else {
-                    startActivity(new Intent(getApplicationContext(),QuerySearchActivity.class));
+                    startActivity(new Intent(getApplicationContext(), QuerySearchActivity.class));
                     Toast.makeText(MainActivity.this, "Searching Please Wait....", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -61,13 +63,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 if (searchQuery.size() >= 4) {
-                    Toast.makeText(MainActivity.this, "Dont Not add more than 4 queries", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "Do Not add more than 4 queries", Toast.LENGTH_SHORT).show();
                 } else {
                     String item = (String) sp.getSelectedItem();
                     searchAndAdd(item);
                 }
 
-                //Toast.makeText(MainActivity.this, item, Toast.LENGTH_SHORT).show();
+            }
+        });
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                queryParam.setText("");
+                searchQuery.clear();
             }
         });
 

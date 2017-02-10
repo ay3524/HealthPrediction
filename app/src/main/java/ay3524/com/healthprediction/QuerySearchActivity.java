@@ -11,10 +11,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class QuerySearchActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class QuerySearchActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView disease;
-    Button panic,back;
+    Button panic, back;
+    List<String> diseases;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,22 +32,17 @@ public class QuerySearchActivity extends AppCompatActivity {
         panic = (Button) findViewById(R.id.panic);
         back = (Button) findViewById(R.id.back);
 
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                finish();
-            }
-        });
-        panic.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(QuerySearchActivity.this, "Soon it will be added!!!", Toast.LENGTH_SHORT).show();
-            }
-        });
+        diseases = new ArrayList<>();
+        diseases.add("You have Fever");
+        diseases.add("You have Typhoid");
+        diseases.add("You have Jaundice");
 
-        AsyncTask<Void, Void, Void> updateTask = new AsyncTask<Void, Void, Void>(){
+        back.setOnClickListener(this);
+        panic.setOnClickListener(this);
+
+        AsyncTask<Void, Void, Void> updateTask = new AsyncTask<Void, Void, Void>() {
             ProgressDialog dialog = new ProgressDialog(QuerySearchActivity.this);
+
             @Override
             protected void onPreExecute() {
                 // what to do before background task
@@ -66,9 +67,9 @@ public class QuerySearchActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(Void result) {
                 // what to do when background task is completed
-                disease.setText("You have fever!!!");
+                disease.setText(diseases.get(getRandomNo()));
                 dialog.dismiss();
-            };
+            }
 
             @Override
             protected void onCancelled() {
@@ -76,7 +77,7 @@ public class QuerySearchActivity extends AppCompatActivity {
                 super.onCancelled();
             }
         };
-        updateTask.execute((Void[])null);
+        updateTask.execute((Void[]) null);
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,4 +89,20 @@ public class QuerySearchActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.back:
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+                break;
+            case R.id.panic:
+                Toast.makeText(QuerySearchActivity.this, "Soon it will be added!!!", Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+    private int getRandomNo() {
+        Random r = new Random();
+        return r.nextInt(3);
+    }
 }
