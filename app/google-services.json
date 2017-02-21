@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "379211150823",
+    "firebase_url": "https://healthprediction-9ed76.firebaseio.com",
+    "project_id": "healthprediction-9ed76",
+    "storage_bucket": "healthprediction-9ed76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:379211150823:android:2f79b2a8a91e0f65",
+        "android_client_info": {
+          "package_name": "ay3524.com.healthprediction"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "379211150823-tc5b1p4e9tv32prcj3lafss3ffdnu5lq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ay3524.com.healthprediction",
+            "certificate_hash": "8411AC0AF205A188AC5A086C38EA3882C1550626"
+          }
+        },
+        {
+          "client_id": "379211150823-aa3ghtb2jr9kigo28s8mr0ifu2rla02i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeo92BdWi-A9iwsg-6vmRErJvTCuQDlnM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "379211150823-aa3ghtb2jr9kigo28s8mr0ifu2rla02i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -93,7 +93,7 @@ public class QuerySearchActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.back:
-                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), PredictionActivity.class));
                 finish();
                 break;
             case R.id.panic:

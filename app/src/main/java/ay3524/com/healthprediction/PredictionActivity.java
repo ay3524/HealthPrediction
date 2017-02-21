@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class PredictionActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner sp;
     List<String> spinnerList;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_prediction);
 
         sp = (Spinner) findViewById(R.id.spinner);
         sp.setOnItemSelectedListener(this);
@@ -52,10 +52,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 if (searchQuery.size() < 3) {
-                    Toast.makeText(MainActivity.this, "Add at least 3 queries in the box to search", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PredictionActivity.this, "Add at least 3 queries in the box to search", Toast.LENGTH_SHORT).show();
                 } else {
                     startActivity(new Intent(getApplicationContext(), QuerySearchActivity.class));
-                    Toast.makeText(MainActivity.this, "Searching Please Wait....", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PredictionActivity.this, "Searching Please Wait....", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 if (searchQuery.size() >= 4) {
-                    Toast.makeText(MainActivity.this, "Do Not add more than 4 queries", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PredictionActivity.this, "Do Not add more than 4 queries", Toast.LENGTH_SHORT).show();
                 } else {
                     String item = (String) sp.getSelectedItem();
                     searchAndAdd(item);
